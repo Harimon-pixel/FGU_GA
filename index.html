@@ -4,48 +4,42 @@
     <meta charset="UTF-8">
     <title>GA4 教學示範網站</title>
     
-    <!-- GA4 追蹤碼 -->
+    <!-- 請將 G-XXXXXXXXXX 換成你自己的 GA4 追蹤碼 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
+        gtag('config', 'G-J0JG6EQ240');
     </script>
 </head>
 <body>
     <h1>歡迎來到 GA4 示範網站</h1>
     <p>這裡是教學用網站，支援 GA4 數據追蹤。</p>
-    
+
     <form id="myForm">
-        <label for="name">名字：</label>
-        <input type="text" id="name" name="name" />
+        <label>名字：<input name="name" /></label>
         <button type="submit">提交</button>
     </form>
-    
-    <br><br>
+
     <button id="testButton">按我一下</button>
 
     <script>
         // 表單提交事件
         document.getElementById('myForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             gtag('event', 'form_submit', {
-                form_id: 'myForm',
-                form_name: 'myForm'
+                'form_id': 'myForm'
             });
-            
             alert('GA4 表單提交事件已發送');
         });
 
         // 按鈕點擊事件
         document.getElementById('testButton').addEventListener('click', function() {
             gtag('event', 'button_click', {
-                button_id: 'testButton',
-                button_text: '按我一下'
+                'button_id': 'testButton'
             });
-            
             alert('GA4 按鈕點擊事件已發送');
         });
     </script>
